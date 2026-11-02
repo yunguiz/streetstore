@@ -1756,10 +1756,15 @@ async function setupViteOrStatic() {
     console.log(`[Prod] Serving static files from ${distPath}`);
   }
 
+  // Para rodar localmente no teu PC
+if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`Street Store Full-Stack Server running on port ${PORT}`);
   });
 }
+
+// Obrigatório para a Vercel processar as rotas da API em produção
+export default app;
 
 setupViteOrStatic().catch((err) => {
   console.error('Failed to start server:', err);
