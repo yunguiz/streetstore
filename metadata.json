@@ -1,0 +1,6 @@
+{
+  "name": "Street Store - Autoridade no Streetwear",
+  "description": "Loja oficial de streetwear raiz, moda urbana underground, tênis exclusivos e acessórios autênticos em Itabira e para todo o Brasil.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
