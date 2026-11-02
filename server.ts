@@ -347,7 +347,7 @@ app.get('/api/nuvemshop/products', async (_req: Request, res: Response) => {
         // Fetch up to 3 pages (300 items max from Bling inventory)
         for (let p = 1; p <= 3; p++) {
           try {
-            const pageData = await fetchFromBling(`/produtos?pagina=${p}&limite=100`);
+            const pageData = await fetchFromBling(`/produtos?pagina=${p}&limite=800`);
             const items = pageData?.data || [];
             if (items.length > 0) {
               blingRaw.push(...items);
@@ -358,7 +358,7 @@ app.get('/api/nuvemshop/products', async (_req: Request, res: Response) => {
           }
         }
 
-        console.log(`[Bling Sync] Fetched ${blingRaw.length} total items from Bling ERP (target up to 300).`);
+        console.log(`[Bling Sync] Fetched ${blingRaw.length} total items from Bling ERP (target up to 800).`);
 
         // Group variations by idProdutoPai or base product title
         const productGroups: Record<string, {
@@ -591,7 +591,7 @@ app.get('/api/nuvemshop/products', async (_req: Request, res: Response) => {
       }
     });
 
-    const finalProducts = products.slice(0, 300);
+    const finalProducts = products.slice(0, 800);
 
     res.json({
       success: true,
