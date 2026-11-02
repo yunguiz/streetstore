@@ -1750,11 +1750,15 @@ async function setupViteOrStatic() {
   } else {
     const distPath = path.resolve(__dirname, 'dist');
     app.use(express.static(distPath));
-    app.get('*', (_req: Request, res: Response) => {
+    
+    // CORREÇÃO: Ignora qualquer rota que comece com /api para não retornar o index.html por engano
+    app.get(/^(?!\/api).*/, (_req: Request, res: Response) => {
       res.sendFile(path.resolve(distPath, 'index.html'));
     });
+    
     console.log(`[Prod] Serving static files from ${distPath}`);
   }
+}
 
   // Para rodar localmente no teu PC
 if (process.env.NODE_ENV !== 'production') {
